@@ -1,6 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 *{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+}
+a {
+	color: black;
 }
 html, body{
 	min-width: 950px;
@@ -15,7 +18,9 @@ html, body{
 	max-width: 1200px;
 	margin: auto;
 }
-
+span.not-show {
+	display: none;
+}
 
 .lamp_header {
 	position: fixed;
@@ -138,20 +143,20 @@ html, body{
 	margin: 0 0 0 0;
 }
 .canvasjs-chart-tooltip div ul {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-style:normal !important;
 	font-size: 13px !important;
 	color: black !important;
 }
 .canvasjs-chart-tooltip div ul li a{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-style:normal !important;
 	font-size: 13px !important;
 	color: black !important;
 }
 
 .tooltip_h {
-	font-family: 'Lato', sans-serif !important;
+	font-family: 'Open Sans', sans-serif !important;
 	font-style:normal !important;
 	font-size: 20px !important;
 }
@@ -211,7 +216,7 @@ td.EASY{
 	background: #40C000;
 	color:white;
 }
-td.FAILED{
+td.FAIL{
 	background: #606060;
 	color:white;
 }
@@ -290,7 +295,7 @@ td.CF{
 	font-size: 1.2em;
 	text-align: center;
 	width: 120px;
-	height:40px;
+	height:35px;
 	padding-top: 10px;
 	-webkit-transition: background 300ms, color 300ms;
     -moz-transition: background 300ms, color 300ms;
@@ -320,29 +325,41 @@ td.CF{
 	color: white;
 	cursor: pointer;
 }
+td.td-clear {
+	background-repeat: no-repeat;
+	background-size: 111px 18px;
+	background-position: center center
+}
 
+td.NOT-PLAYED {
+	background-image: url("image/NOT-PLAYED.gif");
+}
 td.FAILED {
-	background-color: #606060;
-	color: white;
+	/*background-color: #606060;*/
+	background-image: url("image/FAILED.gif");
 }
 td.EASY-CLEAR {
-	background-color: #40C000;
-	color: white;
+	/*background-color: #40C000;*/
+	background-image: url("image/EASY-CLEAR.gif");
 }
 td.CLEAR {
-	background-color: #FF8C00;
-	color: white;
+	/*background-color: #FF8C00;*/
+	background-image: url("image/clear.png");
 }
 td.HARD-CLEAR {
-	background-color: #CC0000;
-	color: white;
+	/*background-color: #CC0000;*/
+	background-image: url("image/HARD-CLEAR.gif");
 }
 td.FULL-COMBO {
-	background-color: #ffd040;
-	color: black;
+	/*background-color: #ffd040;*/
+	background-image: url("image/FULL-COMBO.gif");
 }
+
 .graph-bar {
-	background-color: #CC0000;
+	background: #ff1c1c; /* Old browsers */
+	background: -moz-linear-gradient(left, #ff7a7a 0%, #ff1c1c 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #ff7a7a 0%,#ff1c1c 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #ff7a7a 0%,#ff1c1c 100%); 
 	color:white;
 	text-align: left;
 }
@@ -355,11 +372,63 @@ th.header {
 
 th.headerSortUp {
 	background-image: url(image/asc.png);
-	background-repeat: no-repeat;
-	background-position: right center;
 }
 th.headerSortDown {
 	background-image: url(image/desc.png);
+}
+
+th.th-LV {
+	width: 4.5%;
+}
+
+th.th-score {
+	width: 5%;
+}
+th.th-rank {
+	width: 5%;
+}
+
+th.th-clear {
+	width: 15%;
+}
+
+td.td-rank{
 	background-repeat: no-repeat;
-	background-position: right center;
+	background-position: center center;
+}
+td.td-MAX{
+	background-image: url("image/MAX.gif");
+	background-size: 45px 27px;
+}
+td.td-AAA{
+	background-image: url("image/AAA.gif");
+	background-size: 45px 27px;
+}
+td.td-AA{
+	background-image: url("image/AA.gif");
+	background-size: 30px 27px;
+}
+td.td-A{
+	background-image: url("image/A.gif");
+	background-size: 24px 27px;
+}
+td.td-B{
+	background-image: url("image/B.gif");
+	background-size: 22px 27px;
+}
+td.td-C{
+	background-image: url("image/C.gif");
+	background-size: 22px 27px;
+}
+td.td-D{
+	background-image: url("image/D.gif");
+	background-size: 22px 27px;
+}
+td.td-E{
+	background-image: url("image/E.gif");
+	background-size: 22px 27px;
+}
+td.td-F{
+	background-image: url("image/F.gif");
+	background-size: 22px 27px;
 }

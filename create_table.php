@@ -51,12 +51,12 @@
             <table id="ScoreTable" class="tablesorter">
                 <thead>
                 <tr>
-                    <th>LV</th>
-                    <th>Title</th>
-                    <th>Score</th>
-                    <th>Clear</th>
-                    <th>Rank</th>
-                    <th>Rate</th>
+                    <th class="th-LV">LV</th>
+                    <th class="th-title">Title</th>
+                    <th class="th-score">Score</th>
+                    <th class="th-clear">Clear</th>
+                    <th class="th-rank">Rank</th>
+                    <th class="th-rate">Rate</th>
                 <tr>
                 </thead>
                 <tbody>
@@ -67,26 +67,20 @@
             $rank = get_rank($song->{"score"}, $song->{"notes"});
             $clear = get_clear($song->{"clear"});
             $percent = get_percentage($song->{"score"}, $song->{"notes"});
+            $song_string = 
+                '<tr>
+                <td>'.$song->{"level"}.'</td>
+                <td><a target="_blank" href="http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5='.$song->{"md5"}.'">'.$song->{"title"}.'</td>
+                <td>'.$song->{"score"}.'</td>
+                <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'</span></td>
+                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'</span></td>';
             if($song->{"score"} == 0) {
-                $song_string = 
-                '<tr>
-                <td>'.$song->{"level"}.'</td>
-                <td>'.$song->{"title"}.'</td>
-                <td>'.$song->{"score"}.'</td>
-                <td class="'.$clear.'">'.$clear.'</td>
-                <td>'.$rank.'</td>
-                <td class="graph"></td>
+                $song_string.=
+                '<td class="graph"></td>
                 </tr>';
-            }
-            else {
-                $song_string = 
-                '<tr>
-                <td>'.$song->{"level"}.'</td>
-                <td>'.$song->{"title"}.'</td>
-                <td>'.$song->{"score"}.'</td>
-                <td class="'.$clear.'">'.$clear.'</td>
-                <td>'.$rank.'</td>
-                <td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
+            }else {
+                $song_string.=
+                '<td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
                 </tr>';
             }
             $table_string.=$song_string;

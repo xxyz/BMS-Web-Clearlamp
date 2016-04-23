@@ -154,7 +154,7 @@
 									<td class='HARD'>".$all_level_count[4]."</td>
 									<td class='GROOVE'>".$all_level_count[3]."</td>
 									<td class='EASY'>".$all_level_count[2]."</td>
-									<td class='FAILED'>".$all_level_count[1]."</td>
+									<td class='FAIL'>".$all_level_count[1]."</td>
 									<td class='NOPLAY'>".$all_level_count[0]."</td>
 							</tbody>
 						</table>";
