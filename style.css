@@ -183,7 +183,7 @@ button[title]{
 	border-collapse: collapse;
 	margin-bottom: 10px;
 }
-#count_table th, td{
+#count_table th, #count_table td{
 	border: 1px solid black;
 	text-align: center;
 	width: 100px;
@@ -193,6 +193,7 @@ button[title]{
 	width: 82%;
 	display: block;
 	margin: auto;
+	min-width: 950px;
 }
 #twitbuttondiv{
 	float: right;
@@ -311,15 +312,30 @@ td.CF{
 
 
 #ScoreTable {
-	border-collapse: collapse;
+	border-collapse: seperate;
+	border-spacing: 0 1px;
 	width: 100%;
-	min-width: 950px;
 	text-align: center;
 }
 #ScoreTable thead {
 	background-color: #303030;
 	color: white;
 	cursor: pointer;
+}
+#ScoreTable tbody tr td{
+	border-bottom: 1px solid black;
+
+}
+#ScoreTable tbody tr:hover td {
+	border-bottom: 3px solid black;
+}
+#ScoreTable td {
+	border: 1px solid black;
+}
+#ScoreTable td:nth-child(1) {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border: 1px solid black;
 }
 td.td-clear {
 	background-repeat: no-repeat;
@@ -363,10 +379,10 @@ td.td-title-EASY-CLEAR {
 	background: linear-gradient(to bottom, #40c000 0%,#519624 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */;
 }
 td.td-title-CLEAR {
-	background: #ffbf02; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffbf02 0%, #d6aa33 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #ffbf02 0%,#d6aa33 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #ffbf02 0%,#d6aa33 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #ff6f02; /* Old browsers */
+	background: -moz-linear-gradient(top, #ff6f02 0%, #e07435 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ff6f02 0%,#e07435 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ff6f02 0%,#e07435 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 td.td-title-HARD-CLEAR {
 	background: #f20000; /* Old browsers */
@@ -375,11 +391,11 @@ td.td-title-HARD-CLEAR {
 	background: linear-gradient(to bottom, #f20000 0%,#b70101 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 td.td-title-FULL-COMBO {
-	background: #ffbf02; /* Old browsers */
-	background: -moz-linear-gradient(top, #FFE187 0%, #ffbf02 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #FFE187 0%,#ffbf02 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #FFE187 0%,#ffbf02 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
+
 td.td-title-FULL-COMBO a {
 	color: black;
 }
@@ -423,7 +439,9 @@ th.th-rank {
 th.th-clear {
 	width: 15%;
 }
-
+th.th-rate {
+	width: 15%;
+}
 td.td-rank{
 	background-repeat: no-repeat;
 	background-position: center center;
