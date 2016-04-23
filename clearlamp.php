@@ -54,7 +54,7 @@
 						echo "<h2 id='playername'>Player: <a target='_blank' href='http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=mypage&playerid=".$lr2ID."'>".$playername." (".$lr2ID.")"."</a></h2>";
 					if(empty($lr2ID)===FALSE &&  $html !== FALSE) {
 						echo '<div id="imageexport">
-								<a class="shrinkbutton" id="download" href="#" download="'.$tablename." ".strtoupper($mode)." LAMP (Player:".$playername.').png">Save as PNG</a>
+								<a class="shrinkbutton" id="download" href="#" download="'.$tablename." ".strtoupper($mode)." LAMP (Player:".$playername.').png">Save PNG</a>
 							</div>';
 					}
 				?>
@@ -186,7 +186,8 @@
 						
 						
 					}
-					echo make_table($songdata);
+					if(count($songdata) > 0)
+						echo make_table($songdata);
 				?>
 			</div>
 			<div id="twitbuttondiv">
