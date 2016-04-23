@@ -216,11 +216,16 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 		$songdata = json_decode( $datastring );
 	}
 	
-    $jsontime = get_time();
+    if(count($songdata)===0)
+    {
+    	exit("Unable to open Table <br><a href=\"javascript:history.go(-1)\">GO BACK</a>");
+    }
     
 	//Level의 목록을 get하고 clear항목을 cgi와 대조해 추가
 	$levelarr = array();
 	$all_level_count = array(0,0,0,0,0,0);
+
+	if($songdata.length)
 	foreach($songdata as $song)
 	{
 		foreach($scorexml->score as $score)
