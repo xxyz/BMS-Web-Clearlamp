@@ -135,59 +135,13 @@
 			<div id="tableContainer" class="tablediv">
 				<?php
 				//make table
-					if(empty($lr2ID)===FALSE &&  $html !== FALSE && $mode === "clear") {
-						echo "
-						<table id='count_table'>
-							<thead>
-								<tr class='count_table_head'>
-									<th>FC</th>
-									<th>HARD</th>
-									<th>GROOVE</th>
-									<th>EASY</th>
-									<th>FAILED</th>
-									<th>NotPlayed</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class='FC'>".$all_level_count[5]."</td>
-									<td class='HARD'>".$all_level_count[4]."</td>
-									<td class='GROOVE'>".$all_level_count[3]."</td>
-									<td class='EASY'>".$all_level_count[2]."</td>
-									<td class='FAIL'>".$all_level_count[1]."</td>
-									<td class='NOPLAY'>".$all_level_count[0]."</td>
-							</tbody>
-						</table>";
-					} else if(empty($lr2ID)===FALSE &&  $html !== FALSE && $mode === "judge") {
-						echo "
-						<table id='count_table'>
-							<thead>
-								<tr class='count_table_head'>
-									<th>MAX</th>
-									<th>AAA</th>
-									<th>AA</th>
-									<th>A</th>
-									<th>B</th>
-									<th>C~F</th>
-									<th>NotPlayed</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class='MAX'>".(int)($all_level_count[6])."</td>
-									<td class='AAA'>".$all_level_count[5]."</td>
-									<td class='AA'>".$all_level_count[4]."</td>
-									<td class='A'>".$all_level_count[3]."</td>
-									<td class='B'>".$all_level_count[2]."</td>
-									<td class='CF'>".$all_level_count[1]."</td>
-									<td class='NOPLAY'>".$all_level_count[0]."</td>
-							</tbody>
-						</table>";
-						
-						
-					}
-					if(count($songdata) > 0)
-						echo make_table($songdata);
+				if(count($songdata) > 0) {
+					$clear_counter = array(0,0,0,0,0);
+					$rank_counter = array(0,0,0,0,0,0);
+					$table_string =  make_table($songdata, $clear_counter, $rank_counter);
+					echo make_sum_table($mode, $clear_counter, $rank_counter);
+					echo $table_string;
+				}
 				?>
 			</div>
 			<div id="twitbuttondiv">

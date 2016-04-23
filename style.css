@@ -181,9 +181,7 @@ button[title]{
 #count_table {
 	border: 1px solid black;
 	border-collapse: collapse;
-	z-index: 999;
 	margin-bottom: 10px;
-	margin-left: 10px;
 }
 #count_table th, td{
 	border: 1px solid black;
@@ -192,9 +190,9 @@ button[title]{
 	margin: 0px;
 }
 .tablediv{
+	width: 82%;
 	display: block;
-	float: left;
-	width: 100%;
+	margin: auto;
 }
 #twitbuttondiv{
 	float: right;
@@ -314,10 +312,9 @@ td.CF{
 
 #ScoreTable {
 	border-collapse: collapse;
-	width: 80%;
+	width: 100%;
 	min-width: 950px;
 	text-align: center;
-	margin: auto;
 }
 #ScoreTable thead {
 	background-color: #303030;

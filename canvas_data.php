@@ -224,7 +224,6 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 	//Level의 목록을 get하고 clear항목을 cgi와 대조해 추가
 	$levelarr = array();
 	$all_level_count = array(0,0,0,0,0,0);
-
 	foreach($songdata as $song)
 	{
 		foreach($scorexml->score as $score)
@@ -341,6 +340,9 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 		$datastring = substr($datastring, 0, strlen($datastring)-1)."]},";
 		$datafullstring .=$datastring;
 	}
+	
+	$all_level_count[0] = count($songdata) - $all_level_count[5] - $all_level_count[4] - $all_level_count[3] - $all_level_count[2] - $all_level_count[1]; 
+	
 	$datafullstring = "
     {
     	title: {
