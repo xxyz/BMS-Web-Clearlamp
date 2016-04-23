@@ -225,7 +225,6 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 	$levelarr = array();
 	$all_level_count = array(0,0,0,0,0,0);
 
-	if($songdata.length)
 	foreach($songdata as $song)
 	{
 		foreach($scorexml->score as $score)

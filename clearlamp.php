@@ -1,5 +1,6 @@
 <?php
 	require('canvas_data.php');
+	require('create_table.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -13,6 +14,7 @@
 		<script type="text/javascript" src="canvasjs.min.js"></script>
 		<script type="text/javascript" src="classie.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<title><?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?></title>
 		
@@ -128,7 +130,7 @@
 				</form>
 			</div>
 		</header>
-		<div class="wrapper">
+		<main class="wrapper">
 			<div id="chartContainer" class="chartdiv"></div>
 			<div id="tableContainer" class="tablediv">
 				<?php
@@ -181,8 +183,10 @@
 									<td class='NOPLAY'>".$all_level_count[0]."</td>
 							</tbody>
 						</table>";
+						
+						
 					}
-					
+					echo make_table($songdata);
 				?>
 			</div>
 			<div id="twitbuttondiv">
@@ -197,7 +201,7 @@
 				}(document, 'script', 'twitter-wjs');
 				</script>
 			</div>
-		</div>
+		</main>
 		<script>
 			window.onload = function () {
 				<?php
@@ -210,6 +214,41 @@
     			chart.render();
     			imagefiledownload();
     			resizeh1();
+				
+				$.tablesorter.addParser({
+					id: 'Clear',
+					is: function(s) {
+						return false;
+					},
+					format: function(s) {
+						return s.replace(/NOT-PLAYED/,0).replace(/FAILED/,1).replace(/EASY-CLEAR/,2).replace(/HARD-CLEAR/,4).replace(/FULL-COMBO/,5).replace(/CLEAR/,3);
+					},
+					type: 'numeric'
+				});
+				
+				$.tablesorter.addParser({
+					id: 'Rank',
+					is: function(s) {
+						return false;
+					},
+					format: function(s) {
+						return s.replace(/AAA/, 0).replace(/AA/,1).replace(/A/,2);
+					},
+					type: 'text'
+				});
+				
+				$("#ScoreTable").tablesorter({
+					headers: {
+						3 : {
+							sorter:'Clear'
+						},
+						
+						4 : {
+							sorter:'Rank'
+						}
+					}
+				}); 
+
     		}
     		
     		window.onresize = function(event){

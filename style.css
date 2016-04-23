@@ -190,55 +190,56 @@ button[title]{
 .tablediv{
 	display: block;
 	float: left;
+	width: 100%;
 }
 #twitbuttondiv{
 	float: right;
 }
-.FC{
+td.FC{
 	background: #FFC000;
 	color: white;
 }
-.HARD{
+td.HARD{
 	background: #D9534F;
 	color:white;
 }
-.GROOVE{
+td.GROOVE{
 	background: #FF8C00;
 	color:white;
 }
-.EASY{
+td.EASY{
 	background: #40C000;
 	color:white;
 }
-.FAILED{
+td.FAILED{
 	background: #606060;
 	color:white;
 }
-.NOPLAY{
+td.NOPLAY{
 	background: #F0F0F0;
 }
 
-.MAX{
+td.MAX{
 	background: #CC0000;
 	color: white;
 }
-.AAA{
+td.AAA{
 	background: #ffd040;
 	color: white;
 }
-.AA{
+td.AA{
 	background: #BFC1C2;
 	color: white;
 }
-.A{
+td.A{
 	background: #CD7F32;
 	color: white;
 }
-.B{
+td.B{
 	background: #B0E57C;
 	color: white;
 }
-.CF{
+td.CF{
 	background: #ACD1E9;
 	color: white;
 }
@@ -286,7 +287,7 @@ button[title]{
 	display: block;
 	text-decoration: none;
 	color: white;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	text-align: center;
 	width: 120px;
 	height:40px;
@@ -304,4 +305,61 @@ button[title]{
 	padding-top: 4px !important;
 	height: 24px !important;
 	font-size: 1.0em !important;
+}
+
+
+#ScoreTable {
+	border-collapse: collapse;
+	width: 80%;
+	min-width: 950px;
+	text-align: center;
+	margin: auto;
+}
+#ScoreTable thead {
+	background-color: #303030;
+	color: white;
+	cursor: pointer;
+}
+
+td.FAILED {
+	background-color: #606060;
+	color: white;
+}
+td.EASY-CLEAR {
+	background-color: #40C000;
+	color: white;
+}
+td.CLEAR {
+	background-color: #FF8C00;
+	color: white;
+}
+td.HARD-CLEAR {
+	background-color: #CC0000;
+	color: white;
+}
+td.FULL-COMBO {
+	background-color: #ffd040;
+	color: black;
+}
+.graph-bar {
+	background-color: #CC0000;
+	color:white;
+	text-align: left;
+}
+th.header {
+	background-image: url(image/bg.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	cursor: pointer;
+}
+
+th.headerSortUp {
+	background-image: url(image/asc.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+th.headerSortDown {
+	background-image: url(image/desc.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
