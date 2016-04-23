@@ -269,7 +269,7 @@
     		function resizeh1() {
     			var winwidth = Math.max($(window).width(), 800);
     			var h2width = $('#playername').width();
-    			$('#tablename').css({'width': (winwidth-h2width-180)+'px'});
+    			$('#tablename').css({'width': (winwidth-h2width-250)+'px'});
     		};
     		
     		$('input[type=radio]').on('change', function() {
