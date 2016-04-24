@@ -170,47 +170,48 @@
     			imagefiledownload();
     			resizeh1();
 				
-				$.tablesorter.addParser({
-					id: 'Clear',
-					is: function(s) {
-						return false;
+				$.tablesorter.addParser(
+					{
+						id: 'Clear',
+						is: function(s) {
+							return false;
+						},
+						format: function(s) {
+							return s.replace(/NOT-PLAYED/,0).replace(/FAILED/,1).replace(/EASY-CLEAR/,2).replace(/HARD-CLEAR/,4).replace(/FULL-COMBO/,5).replace(/CLEAR/,3);
+						},
+						type: 'numeric'
 					},
-					format: function(s) {
-						return s.replace(/NOT-PLAYED/,0).replace(/FAILED/,1).replace(/EASY-CLEAR/,2).replace(/HARD-CLEAR/,4).replace(/FULL-COMBO/,5).replace(/CLEAR/,3);
+					{
+						id: 'Rank',
+						is: function(s) {
+							return false;
+						},
+						format: function(s) {
+							return s.replace(/<span class="not-show">/, "").replace(/MAX/,0).replace(/AAA/, 1).replace(/AA/,2).replace(/A/,3).replace(/B/,4).replace(/C/,5).replace(/E/,6).replace(/F/,7);
+						},
+						type: 'numeric'
 					},
-					type: 'numeric'
-				});
-				$.tablesorter.addParser({
-					id: 'Rank',
-					is: function(s) {
-						return false;
+					{
+						id: 'BP',
+						is: function(s) {
+							return false;
+						},
+						format: function(s) {
+							return s.replace(/　/, 999999);
+						},
+						type: 'numeric'
 					},
-					format: function(s) {
-						return s.replace(/MAX/,0).replace(/AAA/, 1).replace(/AA/,2).replace(/A/,3);
-					},
-					type: 'text'
-				});
-				$.tablesorter.addParser({
-					id: 'BP',
-					is: function(s) {
-						return false;
-					},
-					format: function(s) {
-						return s.replace(/　/, 999999);
-					},
-					type: 'numeric'
-				});
-				
-				$.tablesorter.addParser({
-					id: 'LV',
-					is: function(s) {
-						return false;
-					},
-					format: function(s) {
-						return s;
-					},
-					type: 'numeric'
-				});
+					{
+						id: 'LV',
+						is: function(s) {
+							return false;
+						},
+						format: function(s) {
+							return s;
+						},
+						type: 'numeric'
+					}
+				);
 				
 				$("#ScoreTable").tablesorter({
 					headers: {

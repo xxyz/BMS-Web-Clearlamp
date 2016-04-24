@@ -138,8 +138,8 @@
                 <td>'.$song->{"level"}.'</td>
                 <td class="td-title td-title-'.$clear.'"><a target="_blank" href="http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5='.$song->{"md5"}.'">'.$song->{"title"}.'</td>
                 <td>'.$song->{"score"}.'</td>
-                <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'　</span></td>
-                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'　</span></td>';
+                <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'</span></td>
+                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'</span></td>';
             if($song->{"score"} == 0) {
                 $song_string.=
                 '<td class="td-bp">　</td>
