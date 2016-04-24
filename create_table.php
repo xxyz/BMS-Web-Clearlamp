@@ -60,13 +60,7 @@
             return 3;
         elseif($score>= $note*2*0.5556)
             return 2;
-        elseif($score>= $note*2*0.4444)
-            return 1;
-        elseif($score>= $note*2*0.3333)
-            return 1;
-        elseif($score>= $note*2*0.2222)
-            return 1;
-        return 0;
+        return 1;
     }
     function get_rank($score, $note) {
         if($score == 0)
@@ -125,6 +119,7 @@
                     <th class="th-score">Score</th>
                     <th class="th-clear">Clear</th>
                     <th class="th-rank">Rank</th>
+                    <th class="th-bp">B+P</th>
                     <th class="th-rate">Rate</th>
                 <tr>
                 </thead>
@@ -147,11 +142,13 @@
                 <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'</span></td>';
             if($song->{"score"} == 0) {
                 $song_string.=
-                '<td class="graph"></td>
+                '<td class="td-bp"></td>
+                <td class="graph"></td>
                 </tr>';
             }else {
                 $song_string.=
-                '<td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
+                '<td class="td-bp td-bp0">'.$song->{"minbp"}.'</td>
+                <td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
                 </tr>';
             }
             $table_string.=$song_string;

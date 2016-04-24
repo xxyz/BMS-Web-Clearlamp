@@ -234,6 +234,7 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 				$all_level_count[(int)$song->clear]++;
 				$song->{"score"} = ((int)($score->pg))*2 + ((int)($score->gr));
 				$song->{"notes"} = (int)($score->notes);
+				$song->{"minbp"} = (int)($score->minbp);
 			}
 		}
 		if(!in_array($song->{"level"}, $levelarr))
