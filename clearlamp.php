@@ -180,27 +180,37 @@
 					},
 					type: 'numeric'
 				});
-				
 				$.tablesorter.addParser({
 					id: 'Rank',
 					is: function(s) {
 						return false;
 					},
 					format: function(s) {
-						return s.replace(/AAA/, 0).replace(/AA/,1).replace(/A/,2);
+						return s.replace(/MAX/,0).replace(/AAA/, 1).replace(/AA/,2).replace(/A/,3);
 					},
 					type: 'text'
+				});
+				$.tablesorter.addParser({
+					id: 'BP',
+					is: function(s) {
+						return false;
+					},
+					format: function(s) {
+						return s.replace(/　/, 999999);
+					},
+					type: 'numeric'
+				});
+				$.tablesorter.addParser({
+					id: 'LV',
+					type: 'numeric'
 				});
 				
 				$("#ScoreTable").tablesorter({
 					headers: {
-						3 : {
-							sorter:'Clear'
-						},
-						
-						4 : {
-							sorter:'Rank'
-						}
+						0 : {sorter: 'LV'},
+						3 : {sorter:'Clear'},
+						4 : {sorter:'Rank'},
+						5 : {sorter: 'BP'}
 					}
 				}); 
 

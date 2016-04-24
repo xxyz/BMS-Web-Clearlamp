@@ -138,17 +138,23 @@
                 <td>'.$song->{"level"}.'</td>
                 <td class="td-title td-title-'.$clear.'"><a target="_blank" href="http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5='.$song->{"md5"}.'">'.$song->{"title"}.'</td>
                 <td>'.$song->{"score"}.'</td>
-                <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'</span></td>
-                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'</span></td>';
+                <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'　</span></td>
+                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'　</span></td>';
             if($song->{"score"} == 0) {
                 $song_string.=
-                '<td class="td-bp"></td>
-                <td class="graph"></td>
+                '<td class="td-bp">　</td>
+                <td class="graph">　</td>
                 </tr>';
             }else {
+                if($song->{"minbp"} == 0) {
+                    $song_string.=
+                    '<td class="td-bp td-bp0">'.$song->{"minbp"}.'</td>';
+                } else {
+                    $song_string.=
+                    '<td class="td-bp">'.$song->{"minbp"}.'</td>';
+                }
                 $song_string.=
-                '<td class="td-bp td-bp0">'.$song->{"minbp"}.'</td>
-                <td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
+                 '<td class="graph"><div class="graph-bar" style="width: '.($percent*100).'%;">'.round(($percent*100), 2).'%</div></td>
                 </tr>';
             }
             $table_string.=$song_string;

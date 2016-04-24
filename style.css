@@ -403,6 +403,12 @@ td.td-title-NOT-PLAYED a {
 	color: black;
 }
 
+td.td-bp0 {
+	background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
 .graph-bar {
 	background: #ff1c1c; /* Old browsers */
 	background: -moz-linear-gradient(left, #ff4747 0%, #ff1c1c 100%); /* FF3.6-15 */
