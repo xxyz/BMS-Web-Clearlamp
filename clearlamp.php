@@ -200,8 +200,15 @@
 					},
 					type: 'numeric'
 				});
+				
 				$.tablesorter.addParser({
 					id: 'LV',
+					is: function(s) {
+						return false;
+					},
+					format: function(s) {
+						return s;
+					},
 					type: 'numeric'
 				});
 				
