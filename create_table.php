@@ -62,25 +62,44 @@
             return 2;
         return 1;
     }
-    function get_rank($score, $note) {
+    function get_rank($score, $note, &$rank_int) {
         if($score == 0)
             return '';
-        if($score >= $note*2)
+        if($score >= $note*2) {
+            $rank_int = 9;
             return 'MAX';
-        elseif($score >= $note*2*0.8889)
+        }
+        elseif($score >= $note*2*0.8889){
+            $rank_int = 8;
             return 'AAA';
-        elseif($score >= $note*2*0.7778)
+        }
+            
+        elseif($score >= $note*2*0.7778){
+            $rank_int = 7;
             return 'AA';
-        elseif($score>= $note*2*0.6667)
+        }
+        elseif($score>= $note*2*0.6667){
+            $rank_int = 6;
             return 'A';
-        elseif($score>= $note*2*0.5556)
+        }
+        elseif($score>= $note*2*0.5556){
+            $rank_int = 5;
             return 'B';
-        elseif($score>= $note*2*0.4444)
+        }
+            
+        elseif($score>= $note*2*0.4444){
+            $rank_int = 4;
             return 'C';
-        elseif($score>= $note*2*0.3333)
+        }
+        elseif($score>= $note*2*0.3333){
+            $rank_int = 3;
             return 'D';
-        elseif($score>= $note*2*0.2222)
+        }
+        elseif($score>= $note*2*0.2222){
+            $rank_int = 2;
             return 'E';
+        }
+        $rank_int = 1;
         return F;
     }
     function get_clear($clear_int)
@@ -130,7 +149,8 @@
             $clear_counter[(int)$song->{"clear"}]++;
             $song_string='';
             $rank_counter[get_rank_int($song->{"score"}, $song->{"notes"})]++;
-            $rank = get_rank($song->{"score"}, $song->{"notes"});
+            $rank_int = 0;
+            $rank = get_rank($song->{"score"}, $song->{"notes"}, $rank_int);
             $clear = get_clear($song->{"clear"});
             $percent = get_percentage($song->{"score"}, $song->{"notes"});
             $song_string = 
@@ -139,7 +159,7 @@
                 <td class="td-title td-title-'.$clear.'"><a target="_blank" href="http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5='.$song->{"md5"}.'">'.$song->{"title"}.'</td>
                 <td>'.$song->{"score"}.'</td>
                 <td class="td-clear '.$clear.'"><span class="not-show">'.$clear.'</span></td>
-                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank.'</span></td>';
+                <td class="td-rank td-'.$rank.'"><span class="not-show">'.$rank_int.'</span></td>';
             if($song->{"score"} == 0) {
                 $song_string.=
                 '<td class="td-bp">　</td>
