@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="classie.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" src="js/range.js"></script>
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<title><?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?></title>
 		
@@ -132,6 +133,62 @@
 		</header>
 		<main class="wrapper">
 			<div id="chartContainer" class="chartdiv"></div>
+			
+			<div id="sidebar">
+				<div id="filter">
+					<div id="level-filter" class="range filter-div" data-min="<?php echo min($levelarr); ?>" data-max="<?php echo "7" ?>" data-step="1">
+						<h3>LEVEL</h3>
+						<input type="hidden" name="min-level" value="<?php echo min($levelarr);?>" />
+						<input type="hidden" name="max-level" value="<?php echo "7"?>" />
+					</div> 
+					<div id="rank-filter" class="filter-div">
+						<h3>RANK</h3>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="MAX" value="MAX" /><span>MAX</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="AAA" value="AAA" /><span>AAA</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="AA" value="AA" /><span>AA</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="A" value="A" /><span>A</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="B" value="B" /><span>B</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="C-F" value="C-F" /><span>C~F</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+						</label></div>
+					</div>
+					<div id="clear-filter" class="filter-div">
+						<h3>CLEAR</h3>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="FC" value="FC" /><span>FC</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="HARD" value="HARD" /><span>HARD</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="CLEAR" value="CLEAR" /><span>CLEAR</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="EASY" value="EASY" /><span>EASY</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="FAILED" value="FAILED" /><span>FAILED</span>
+						</label></div>
+						<div class="ck-button"><label>
+							<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+						</label></div>
+					</div>
+				</div>
+			</div>
+			
 			<div id="tableContainer" class="tablediv">
 				<?php
 				//make table
@@ -179,9 +236,7 @@
 							return s.replace(/NOT-PLAYED/,0).replace(/FAILED/,1).replace(/EASY-CLEAR/,2).replace(/HARD-CLEAR/,4).replace(/FULL-COMBO/,5).replace(/CLEAR/,3);
 						},
 						type: 'numeric'
-				});
-				
-					
+				});	
 				$.tablesorter.addParser({
 					id: 'BP',
 					is: function(s) {
@@ -202,8 +257,6 @@
 					},
 					type: 'numeric'
 				});
-				
-				
 				$("#ScoreTable").tablesorter({
 					headers: {
 						0 : {sorter: 'LV'},
