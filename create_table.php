@@ -1,7 +1,7 @@
 <?php
     function make_sum_table ($mode, $all_level_count, $rank_count){
         return "
-        <table id='count_table'>
+        <table class='count_table'>
             <thead>
                 <tr class='count_table_head'>
                     <th>FC</th>
@@ -23,7 +23,7 @@
             </tbody>
         </table>
         
-        <table id='count_table'>
+        <table class='count_table'>
             <thead>
                 <tr class='count_table_head'>
                     <th>MAX</th>

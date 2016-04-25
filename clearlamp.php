@@ -134,73 +134,78 @@
 		<main class="wrapper">
 			<div id="chartContainer" class="chartdiv"></div>
 			
-			<div id="sidebar">
-				<div id="filter">
-					<div id="level-filter" class="range filter-div" data-min="<?php echo min($levelarr); ?>" data-max="<?php echo "7" ?>" data-step="1">
-						<h3>LEVEL</h3>
-						<input type="hidden" name="min-level" value="<?php echo min($levelarr);?>" />
-						<input type="hidden" name="max-level" value="<?php echo "7"?>" />
-					</div> 
-					<div id="rank-filter" class="filter-div">
-						<h3>RANK</h3>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="MAX" value="MAX" /><span>MAX</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="AAA" value="AAA" /><span>AAA</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="AA" value="AA" /><span>AA</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="A" value="A" /><span>A</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="B" value="B" /><span>B</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="C-F" value="C-F" /><span>C~F</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
-						</label></div>
+			<div id="bottomContainer">
+				<div id="sidebar">
+					<div id="filter">
+						<div id="level-filter" class="range filter-div" data-min="<?php echo min($levelarr); ?>" data-max="<?php echo "7" ?>" data-step="1">
+							<h3>LEVEL</h3>
+							<input type="hidden" name="min-level" value="<?php echo min($levelarr);?>" />
+							<input type="hidden" name="max-level" value="<?php echo "7"?>" />
+							<div id="range-show"></div>
+						</div> 
+						<div id="rank-filter" class="filter-div">
+							<h3>RANK</h3>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="MAX" value="MAX" /><span>MAX</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="AAA" value="AAA" /><span>AAA</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="AA" value="AA" /><span>AA</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="A" value="A" /><span>A</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="B" value="B" /><span>B</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="C-F" value="C-F" /><span>C~F</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+							</label></div>
+						</div>
+						<div id="clear-filter" class="filter-div">
+							<h3>CLEAR</h3>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="FC" value="FC" /><span>FC</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="HARD" value="HARD" /><span>HARD</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="CLEAR" value="CLEAR" /><span>CLEAR</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="EASY" value="EASY" /><span>EASY</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="FAILED" value="FAILED" /><span>FAILED</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+							</label></div>
+						</div>
 					</div>
-					<div id="clear-filter" class="filter-div">
-						<h3>CLEAR</h3>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="FC" value="FC" /><span>FC</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="HARD" value="HARD" /><span>HARD</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="CLEAR" value="CLEAR" /><span>CLEAR</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="EASY" value="EASY" /><span>EASY</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="FAILED" value="FAILED" /><span>FAILED</span>
-						</label></div>
-						<div class="ck-button"><label>
-							<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
-						</label></div>
-					</div>
+				</div>
+				
+				<div id="tableContainer" class="tablediv">
+					<?php
+					//make table
+					if(count($songdata) > 0) {
+						$clear_counter = array(0,0,0,0,0);
+						$rank_counter = array(0,0,0,0,0,0);
+						$table_string =  make_table($songdata, $clear_counter, $rank_counter);
+						echo make_sum_table($mode, $clear_counter, $rank_counter);
+						echo $table_string;
+					}
+					?>
 				</div>
 			</div>
 			
-			<div id="tableContainer" class="tablediv">
-				<?php
-				//make table
-				if(count($songdata) > 0) {
-					$clear_counter = array(0,0,0,0,0);
-					$rank_counter = array(0,0,0,0,0,0);
-					$table_string =  make_table($songdata, $clear_counter, $rank_counter);
-					echo make_sum_table($mode, $clear_counter, $rank_counter);
-					echo $table_string;
-				}
-				?>
-			</div>
+				
 			<div id="twitbuttondiv">
 				<a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
 				<script>
@@ -222,6 +227,7 @@
 					else
 						echo 'CanvasJS.addColorSet("pastel", ["#CC0000", "#ffd040", "#BFC1C2", "#CD7F32", "#B0E57C", "#ACD1E9", "#F0F0F0"]);';
 				?>
+				
     			var chart = new CanvasJS.Chart("chartContainer", <?php echo $datafullstring;?>);
     			chart.render();
     			imagefiledownload();
@@ -264,17 +270,29 @@
 						5 : {sorter: 'BP'}
 					}
 				}); 
-
+				range_show();
     		}
     		
+			$('#level-filter').change(function() {
+				range_show()
+			});
+			
     		window.onresize = function(event){
     			resizeh1();
     		}
     		
-    		document.getElementById('download').addEventListener('click', function() {
+    		document.getElementById('download').addEventListener('onchange', function() {
 			    imagefiledownload();
 			}, false);
-
+			
+			function range_show() {
+				$('#range-show').html(function() {
+					var min = $('[data-name="min-level"]').attr('data-value');
+					var max = $('[data-name="max-level"]').attr('data-value');
+					return min.concat("~", max);
+				});
+			}
+			
     		function imagefiledownload() {
     			var canvas = document.getElementsByClassName("canvasjs-chart-canvas");
     			var img = canvas[0].toDataURL("image/png").replace("image/png", "image/octet-stream");
