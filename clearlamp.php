@@ -137,55 +137,66 @@
 			<div id="bottomContainer">
 				<div id="sidebar">
 					<div id="filter">
-						<div id="level-filter" class="range filter-div" data-min="<?php echo min($levelarr); ?>" data-max="<?php echo "7" ?>" data-step="1">
+						<div id="level-filter">
 							<h3>LEVEL</h3>
-							<input type="hidden" name="min-level" value="<?php echo min($levelarr);?>" />
-							<input type="hidden" name="max-level" value="<?php echo "7"?>" />
-							<div id="range-show"></div>
+							<div id="level-range" class="range filter-div" data-min="<?php echo min($level_int_arr); ?>" data-max="<?php echo max($level_int_arr); ?>" data-step="1">
+								<input type="hidden" name="min-level" value="<?php echo min($level_int_arr);?>" />
+								<input type="hidden" name="max-level" value="<?php echo max($level_int_arr);?>" />
+								<div id="range-show"></div>
+							</div>
+							<div class="ck-button"><label>
+								<input type="checkbox" name="char-level" value="charlv" checked/><span>+Char LV</span>
+							</label></div>
 						</div> 
 						<div id="rank-filter" class="filter-div">
 							<h3>RANK</h3>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="MAX" value="MAX" /><span>MAX</span>
+								<input class="rank-checkbox" type="checkbox" name="ALL-RANK" value="ALL-RANK" checked/><span>ALL</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="AAA" value="AAA" /><span>AAA</span>
+								<input class="rank-checkbox" type="checkbox" name="MAX" value="MAX" checked/><span>MAX</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="AA" value="AA" /><span>AA</span>
+								<input class="rank-checkbox" type="checkbox" name="AAA" value="AAA" checked/><span>AAA</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="A" value="A" /><span>A</span>
+								<input class="rank-checkbox" type="checkbox" name="AA" value="AA" checked/><span>AA</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="B" value="B" /><span>B</span>
+								<input class="rank-checkbox" type="checkbox" name="A" value="A" checked/><span>A</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="C-F" value="C-F" /><span>C~F</span>
+								<input class="rank-checkbox" type="checkbox" name="B" value="B" checked/><span>B</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+								<input class="rank-checkbox" type="checkbox" name="C-F" value="C-F" checked/><span>C~F</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input class="rank-checkbox" type="checkbox" name="noplay" value="noplay" checked/><span>NO PLAY</span>
 							</label></div>
 						</div>
 						<div id="clear-filter" class="filter-div">
 							<h3>CLEAR</h3>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="FC" value="FC" /><span>FC</span>
+								<input class="clear-checkbox" type="checkbox" name="ALL-CLEAR" value="ALL-CLEAR" checked/><span>ALL</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="HARD" value="HARD" /><span>HARD</span>
+								<input class="clear-checkbox" type="checkbox" name="FC" value="FULL-COMBO" checked/><span>FC</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="CLEAR" value="CLEAR" /><span>CLEAR</span>
+								<input class="clear-checkbox" type="checkbox" name="HARD" value="HARD-CLEAR" checked/><span>HARD</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="EASY" value="EASY" /><span>EASY</span>
+								<input class="clear-checkbox" type="checkbox" name="CLEAR" value="CLEAR" checked/><span>CLEAR</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="FAILED" value="FAILED" /><span>FAILED</span>
+								<input class="clear-checkbox" type="checkbox" name="EASY" value="EASY-CLEAR" checked/><span>EASY</span>
 							</label></div>
 							<div class="ck-button"><label>
-								<input type="checkbox" name="noplay" value="noplay" /><span>NO PLAY</span>
+								<input class="clear-checkbox" type="checkbox" name="FAILED" value="FAILED" checked/><span>FAILED</span>
+							</label></div>
+							<div class="ck-button"><label>
+								<input class="clear-checkbox" type="checkbox" name="noplay" value="NOT-PLAYED" checked/><span>NO PLAY</span>
 							</label></div>
 						</div>
 					</div>
@@ -205,7 +216,7 @@
 				</div>
 			</div>
 			
-				
+			<!--
 			<div id="twitbuttondiv">
 				<a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
 				<script>
@@ -218,6 +229,7 @@
 				}(document, 'script', 'twitter-wjs');
 				</script>
 			</div>
+			-->
 		</main>
 		<script>
 			window.onload = function () {
@@ -233,6 +245,7 @@
     			imagefiledownload();
     			resizeh1();
 				
+				//tablesorter setting
 				$.tablesorter.addParser({
 						id: 'Clear',
 						is: function(s) {
@@ -259,6 +272,9 @@
 						return false;
 					},
 					format: function(s) {
+						if(!($.isNumeric(s))) {
+							return s.charCodeAt(0);
+						}
 						return s;
 					},
 					type: 'numeric'
@@ -270,12 +286,75 @@
 						5 : {sorter: 'BP'}
 					}
 				}); 
+				
 				range_show();
+				
+				
+				
+			
     		}
-    		
-			$('#level-filter').change(function() {
-				range_show()
+			
+			//filter tds
+			$("#filter").change(function() {
+				$(".song-tr").show();
+				
+				var min_lv = parseInt($('input[name="min-level"]').attr('value'));
+				var max_lv = parseInt($('input[name="max-level"]').attr('value'));
+				var char_lv = $('input[name="char-level"]').prop("checked");
+				if(max_lv < min_lv)
+					[min_lv, max_lv] = [max_lv, min_lv];
+				$(".level-td").each(function() {
+					var currnum = $(this).html();
+					var isnum = $.isNumeric(currnum);
+					var currnum_int = parseInt(currnum);
+					if((char_lv==false) && (isnum == false) ) {
+						$(this).closest("tr").hide();
+					} else if(isnum && (currnum_int < min_lv || currnum_int > max_lv) ) {
+						$(this).closest("tr").hide();
+					}
+				})
+				range_show();
+				
+				$('#rank-filter').find('input:not(:checked)').each(function() {
+					var rank = $(this).attr('value');
+					if(rank === "C-F"){
+						$(".td-C").closest("tr").hide();
+						$(".td-D").closest("tr").hide();
+						$(".td-E").closest("tr").hide();
+						$(".td-F").closest("tr").hide();
+					} else {
+						$(".td-".concat(rank)).closest("tr").hide();
+					}
+				});
+			
+				$('#clear-filter').find('input:not(:checked)').each(function() {
+					var clear = $(this).attr('value');
+					$(".".concat(clear)).closest("tr").hide();
+				});
 			});
+			
+			//checkbox all
+			$("input[value='ALL-RANK']").change(function() {
+				$(".rank-checkbox").prop("checked", $("input[value='ALL-RANK']").prop("checked"));
+			});
+			$("input[value='ALL-CLEAR']").change(function() {
+				$(".clear-checkbox").prop("checked", $("input[value='ALL-CLEAR']").prop("checked"));
+			});
+			$(".rank-checkbox").change(function() {
+				if($(this).attr("value") !== 'ALL-RANK')
+					$("input[value='ALL-RANK']").prop("checked", false);				
+			});
+			$(".clear-checkbox").change(function() {
+				if($(this).attr("value") !== 'ALL-CLEAR')
+					$("input[value='ALL-CLEAR']").prop("checked", false);				
+			});
+			//checkbox noplay
+			$("input[name='noplay']").change(function() {
+				var no_check = $(this).prop("checked");
+				$("input[name='noplay']").prop("checked", no_check);
+			});
+			
+    		
 			
     		window.onresize = function(event){
     			resizeh1();
@@ -285,10 +364,13 @@
 			    imagefiledownload();
 			}, false);
 			
+			//level range show
 			function range_show() {
 				$('#range-show').html(function() {
 					var min = $('[data-name="min-level"]').attr('data-value');
 					var max = $('[data-name="max-level"]').attr('data-value');
+					if(parseInt(max) < parseInt(min))
+						[min, max] = [max, min];
 					return min.concat("~", max);
 				});
 			}
@@ -309,6 +391,25 @@
 			    $(this).closest("form").submit();
 			});
     		
+			
+			//animate sidebar
+			$(function() {
+				$sidebar   = $("#sidebar"), 
+				$window    = $(window),
+				offset     = $sidebar.offset();
+				
+				$window.scroll(function() {
+					if($window.scrollTop() > offset.top - 100) {
+						$("#sidebar").stop().animate({
+							marginTop: $window.scrollTop() + 100 - offset.top 
+						}, 200);
+					} else {
+						$sidebar.stop().animate();
+					}
+				})
+			})
+			
+			//animate header
 			var cbpAnimatedHeader = (function() {	
 				var docElem = document.documentElement,
 					header = document.querySelector( '.lamp_header' ),
@@ -347,12 +448,12 @@
 			})();
 			
 			//google analytics
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-51935531-1', 'auto');
-		  ga('send', 'pageview');
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51935531-1', 'auto');
+			ga('send', 'pageview');
 		</script>
 	</body>
 </html>

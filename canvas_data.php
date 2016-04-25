@@ -1,5 +1,6 @@
 <?php
 //songdata 분류
+
 function add_song($song, $mode, $level, $i)
 {
 	if($mode === "clear") {
@@ -182,6 +183,10 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 	$playername = get_playername($lr2_cgi);
 	$scorexml = simplexml_load_string(substr($lr2_cgi, 1, strpos($lr2_cgi, rivalname)-2));
 	
+	if($scorexml === false) {
+		exit("Unable to get score. <br><a href=\"javascript:history.go(-1)\">GO BACK</a>");
+	}
+	
 	//table URL에서 html파싱 후  header.json url get
 	$dom = new DOMDocument();
 	@$dom->loadHTML($html);
@@ -195,6 +200,8 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 				$header_url = substr($table_url, 0, strrpos($table_url, "/")+1).$header_url;
 		}
 	}
+	
+	
 	
 	//header.json
 	$headerjson = json_decode(trim(trim(read_url($header_url), "\x00..\x1F"), "\x80..\xFF"));
@@ -243,6 +250,8 @@ if(empty($lr2ID)===FALSE &&  $html !== FALSE)
 	natsort($levelarr);
 	$levelarr=array_reverse($levelarr);
 	
+	
+	$level_int_arr = array_filter($levelarr, "is_numeric");
     $cleartime = get_time();
     
 	//canvajs용 데이터 만들기

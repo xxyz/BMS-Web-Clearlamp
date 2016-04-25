@@ -192,7 +192,7 @@ button[title]{
 	margin: 0px;
 }
 #tableContainer{
-	width: 82%;
+	width: calc(100% - 155px);
 	display: block;
 	float: left;
 	min-width: 800px;
@@ -496,6 +496,9 @@ td.td-F{
 #sidebar {
 	width: 150px;
 	float: left;
+}
+#sidebar h3 {
+	margin-bottom: 3px;
 }
 .filter-div {
 	float: left;
