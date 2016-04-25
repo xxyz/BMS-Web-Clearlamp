@@ -11,10 +11,10 @@
 		<meta name="twitter:site" content="@xxyzzzzz" />
 		<meta name="twitter:title" content="BMS ClearLamp" />
 		<meta name="twitter:description" content="<?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?>" />
-		<script type="text/javascript" src="canvasjs.min.js"></script>
-		<script type="text/javascript" src="classie.js"></script>
+		<script type="text/javascript" src="js/canvasjs.min.js"></script>
+		<script type="text/javascript" src="js/classie.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript" src="js/range.js"></script>
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<title><?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?></title>
