@@ -134,7 +134,7 @@
 		<main class="wrapper">
 			<div id="chartContainer" class="chartdiv"></div>
 			
-			<div id="bottomContainer" <?php if(empty($lr2ID) ||  $html == FALSE) echo "style='display:none;'"; ?>>
+			<div id="bottomContainer">
 				<div id="sidebar">
 					<div id="filter">
 						<div id="level-filter">
