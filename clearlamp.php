@@ -11,12 +11,16 @@
 		<meta name="twitter:site" content="@xxyzzzzz" />
 		<meta name="twitter:title" content="BMS ClearLamp" />
 		<meta name="twitter:description" content="<?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?>" />
+		
 		<script type="text/javascript" src="js/canvasjs.min.js"></script>
 		<script type="text/javascript" src="js/classie.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript" src="js/range.js"></script>
+		<script type="text/javascript" src="js/jquery.stickybar.min.js"></script>
+		
 		<link href="style.css" rel="stylesheet" type="text/css">
+		
 		<title><?php echo $tablename." ".strtoupper($mode)." LAMP"; if(!empty($playername)) echo " (".$playername.")";?></title>
 		
 		<style>
@@ -55,7 +59,7 @@
 						echo "<h2 id='playername'>Player: <a target='_blank' href='http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=mypage&playerid=".$lr2ID."'>".$playername." (".$lr2ID.")"."</a></h2>";
 					if(empty($lr2ID)===FALSE &&  $html !== FALSE) {
 						echo '<div id="imageexport">
-								<a class="shrinkbutton" id="download" href="#" download="'.$tablename." ".strtoupper($mode)." LAMP (Player:".$playername.').png">Save PNG</a>
+								<a class="shrinkbutton" id="download" href="#" download="'.$tablename." ".strtoupper($mode)." LAMP (Player:".$playername.').png">Save as PNG</a>
 							</div>';
 					}
 				?>
@@ -290,6 +294,10 @@
 				
 				range_show();
 				
+				//animate sidebar
+				$('#sidebar').stickyBar({
+					top: 50
+				});
     		}
 			
 			//filter tds
@@ -389,24 +397,6 @@
 			    $(this).closest("form").submit();
 			});
     		
-			
-			//animate sidebar
-			/*
-			$(function() {
-				$sidebar   = $("#sidebar"), 
-				$window    = $(window),
-				offset     = $sidebar.offset();
-				
-				$window.scroll(function() {
-					if($window.scrollTop() > offset.top - 100) {
-						$("#sidebar").stop().animate({
-							marginTop: $window.scrollTop() + 100 - offset.top 
-						}, 200);
-					} else {
-						$sidebar.stop().animate();
-					}
-				})
-			})*/
 			
 			//animate header
 			var cbpAnimatedHeader = (function() {	
