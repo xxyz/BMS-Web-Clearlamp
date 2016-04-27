@@ -5,8 +5,12 @@
 html, body{
 	min-width: 950px;
 }
+
 h1 {
 	font-size: 1.8em;
+}
+td, th {
+	background: white;
 }
 ::selection {
   background: #ffb7b7; /* WebKit/Blink Browsers */
@@ -21,6 +25,7 @@ h1 {
 span.not-show {
 	display: none;
 }
+
 
 .lamp_header {
 	position: fixed;
@@ -363,6 +368,11 @@ td.HARD-CLEAR {
 td.FULL-COMBO {
 	background-image: url("image/FULL-COMBO.gif");
 }
+
+.score-table-header-tr th {
+	background: #303030;
+}
+
 td.td-title a{
 	color: white;
 	text-decoration: none;
@@ -433,6 +443,9 @@ th.headerSortDown {
 	background-image: url(image/desc.png);
 }
 
+th.th-lamp {
+	width: 10px;
+}
 th.th-LV {
 	width: 4.5%;
 }
@@ -491,6 +504,72 @@ td.td-E{
 td.td-F{
 	background-image: url("image/F.gif");
 	background-size: 22px 27px;
+}
+
+.td-lamp-HARD-CLEAR {
+	animation: hard 1s infinite;
+	
+}
+.td-lamp-FULL-COMBO {
+	animation: fullcombo 0.1s infinite;
+}
+.td-lamp-FAILED {
+	animation: failed 0.1s ease-in-out infinite alternate;
+}
+.td-lamp-EASY-CLEAR {
+	animation: easy 0.1s ease-in-out infinite alternate;
+}
+.td-lamp-CLEAR {
+	animation: clear 0.1s ease-in-out infinite alternate;
+}
+.td-lamp-NOT-PLAYED {
+	background-color:#262626;
+}
+@keyframes hard {
+	from {
+		background-color: white;
+	}
+	to {
+		background-color: #EEE;
+	}
+}
+
+@keyframes clear {
+	from {
+		background-color: #ffad33;
+	}
+	to {
+		background-color: #cc7a00;
+	}
+}
+@keyframes easy {
+	from {
+		background-color: #00cc00;
+	}
+	to {
+		background-color: #008000;
+	}
+}
+
+@keyframes failed {
+	from {
+		background-color: #ea2626;
+	}
+	to {
+		background-color: #8b0e0e;
+	}
+}
+
+@keyframes fullcombo {
+	from {
+		background-color: hotpink;
+	}
+	30% {
+		background-color: white;
+	}
+	60% {
+		background-color: aqua;
+	}
 }
 
 #sidebar {

@@ -281,17 +281,15 @@
 				});
 				$("#ScoreTable").tablesorter({
 					headers: {
-						0 : {sorter: 'LV'},
-						3 : {sorter:'Clear'},
-						5 : {sorter: 'BP'}
+						0 : {sorter: false},
+						1 : {sorter: 'LV'},
+						4 : {sorter:'Clear'},
+						6 : {sorter: 'BP'}
 					}
 				}); 
 				
 				range_show();
 				
-				
-				
-			
     		}
 			
 			//filter tds
@@ -393,6 +391,7 @@
     		
 			
 			//animate sidebar
+			/*
 			$(function() {
 				$sidebar   = $("#sidebar"), 
 				$window    = $(window),
@@ -407,7 +406,7 @@
 						$sidebar.stop().animate();
 					}
 				})
-			})
+			})*/
 			
 			//animate header
 			var cbpAnimatedHeader = (function() {	

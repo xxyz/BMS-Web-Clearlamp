@@ -132,7 +132,8 @@
         $table_string = '
             <table id="ScoreTable" class="tablesorter">
                 <thead>
-                <tr>
+                <tr class="score-table-header-tr">
+                    <th class="th-lamp"></th>
                     <th class="th-LV">LV</th>
                     <th class="th-title">Title</th>
                     <th class="th-score">Score</th>
@@ -140,7 +141,7 @@
                     <th class="th-rank">Rank</th>
                     <th class="th-bp">B+P</th>
                     <th class="th-rate">Rate</th>
-                <tr>
+                </tr>
                 </thead>
                 <tbody>
         ';
@@ -155,6 +156,7 @@
             $percent = get_percentage($song->{"score"}, $song->{"notes"});
             $song_string = 
                 '<tr class="song-tr">
+                <td class="td-lamp td-lamp-'.$clear.'"> </td>
                 <td class="level-td">'.$song->{"level"}.'</td>
                 <td class="td-title td-title-'.$clear.'"><a target="_blank" href="http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5='.$song->{"md5"}.'">'.$song->{"title"}.'</td>
                 <td>'.$song->{"score"}.'</td>
@@ -165,7 +167,7 @@
                 '<td class="td-bp">　</td>
                 <td class="graph">　</td>
                 </tr>';
-            }else {
+            } else {
                 if($song->{"minbp"} == 0) {
                     $song_string.=
                     '<td class="td-bp td-bp0">'.$song->{"minbp"}.'</td>';
