@@ -59,7 +59,7 @@
 						echo "<h2 id='playername'>Player: <a target='_blank' href='http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=mypage&playerid=".$lr2ID."'>".$playername." (".$lr2ID.")"."</a></h2>";
 					if(empty($lr2ID)===FALSE &&  $html !== FALSE) {
 						echo '<div id="imageexport">
-								<a class="shrinkbutton" id="download" href="#" download="'.$tablename." ".strtoupper($mode)." LAMP (Player:".$playername.').png">Save as PNG</a>
+								<a class="shrinkbutton" id="download" href="#">Save as PNG</a>
 							</div>';
 					}
 				?>
@@ -243,10 +243,9 @@
 					else
 						echo 'CanvasJS.addColorSet("pastel", ["#CC0000", "#ffd040", "#BFC1C2", "#CD7F32", "#B0E57C", "#ACD1E9", "#F0F0F0"]);';
 				?>
-				
+				$("#chartContainer").html("");
     			var chart = new CanvasJS.Chart("chartContainer", <?php echo $datafullstring;?>);
     			chart.render();
-    			imagefiledownload();
     			resizeh1();
 				
 				//tablesorter setting
@@ -299,6 +298,13 @@
 					top: 50
 				});
     		}
+			
+			$("#download").click(function() {
+				var image = $(".canvasjs-chart-canvas")[0].toDataURL("imgae/png").replace("image/png", "image/octet-stream");
+				var filename = ""
+				<?php echo ("+ '". $tablename." ".strtoupper($mode)." LAMP (Player:".$playername.").png';");?>
+				$(this).attr("href", image).attr("download", filename);
+			});
 			
 			//filter tds
 			$("#filter").change(function() {
@@ -365,10 +371,6 @@
     		window.onresize = function(event){
     			resizeh1();
     		}
-    		
-    		document.getElementById('download').addEventListener('onchange', function() {
-			    imagefiledownload();
-			}, false);
 			
 			//level range show
 			function range_show() {
@@ -381,12 +383,6 @@
 				});
 			}
 			
-    		function imagefiledownload() {
-    			var canvas = document.getElementsByClassName("canvasjs-chart-canvas");
-    			var img = canvas[0].toDataURL("image/png").replace("image/png", "image/octet-stream");
-    			document.getElementById('download').setAttribute("href", img)
-    		}
-    		
     		function resizeh1() {
     			var winwidth = Math.max($(window).width(), 800);
     			var h2width = $('#playername').width();
