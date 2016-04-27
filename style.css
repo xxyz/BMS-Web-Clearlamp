@@ -200,7 +200,6 @@ button[title]{
 	width: calc(100% - 155px);
 	position: absolute;
 	left: 150px;
-	top: 0;
 	display: block;
 	float: left;
 	min-width: 800px;
